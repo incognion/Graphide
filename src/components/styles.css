@@ -1,0 +1,205 @@
+/* styles.css */
+
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 20px;
+}
+
+h2, h3 {
+    color: #333;
+    text-align: center;
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.title h1 {
+    font-size: 2rem;
+    color: #333;
+}
+
+
+/* Input and button styles */
+input[type="text"] {
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: calc(100% - 40px); /* Adjust input width for padding */
+    max-width: 400px; /* Maximum width to prevent overflow */
+    box-sizing: border-box;
+}
+
+button {
+    padding: 10px 15px;
+    margin: 5px;
+    background-color: #5a67d8;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #434190;
+}
+
+.nodes-container, .edges-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.node-boxes, .edge-boxes {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.node-box, .edge-box {
+    min-width: 120px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.node-box button, .edge-box button {
+    margin-top: 10px;
+    padding: 5px 10px;
+    border: none;
+    background-color: #ff4d4f;
+    color: white;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.node-box button:hover, .edge-box button:hover {
+    background-color: #ff7875;
+}
+
+/* To hide the scrollbar while allowing scrolling */
+.node-boxes::-webkit-scrollbar, .edge-boxes::-webkit-scrollbar {
+    display: none;
+}
+
+.node-boxes, .edge-boxes {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+
+/* List styles */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    padding: 5px;
+}
+
+/* Shotest Path */
+.shortest-path-container {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.shortest-path, .cycle {
+    display: flex;
+    align-items: center;
+    overflow-x: auto;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.path-node, .cycle-node {
+    padding: 10px 20px;
+    border: 2px solid #4CAF50;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    text-align: center;
+    font-weight: bold;
+    min-width: 50px;
+}
+
+.path-connector, .cycle-connector {
+    width: 40px;
+    height: 2px;
+    background-color: #4CAF50;
+}
+
+/* Topological sort result styles */
+.topological-sort-result {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+    justify-content: center;
+}
+
+.topological-sort-item {
+    background-color: #e2f0d9;
+    border: 1px solid #28a745;
+    color: #155724;
+    padding: 10px;
+    border-radius: 4px;
+    width: 80px; /* Adjust width for square boxes */
+    text-align: center;
+}
+
+/* Graph visualization container */
+.graph-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.graph-content {
+    text-align: center;
+}
+
+.graph {
+    width: 100%;
+    max-width: 500px;
+    height: 500px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+@media (max-width: 600px) {
+    .graph {
+        max-width: 300px;
+        height: 300px; /* Adjust height for smaller screens */
+    }
+}
+
+
+/* Cycle results */
+/* .cycles-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-x: auto;
+    padding: 10px;
+} */
+
+.topological-sort-container, .cycles-container{
+    text-align: center;
+}
