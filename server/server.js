@@ -9,7 +9,7 @@ app.use(express.json());
 app.use(cors());
 
 const mongoUri = process.env.MONGO_URI;
-mongoose.connect(mongoUri);
+mongoose.connect(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true });
 
 const nodeSchema = new mongoose.Schema({ name: String });
 const edgeSchema = new mongoose.Schema({ from: String, to: String });
