@@ -22,8 +22,8 @@ const GraphManager = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const nodesRes = await axios.get('http://localhost:5000/nodes');
-            const edgesRes = await axios.get('http://localhost:5000/edges');
+            const nodesRes = await axios.get('https://graphide-backend.onrender.com/nodes');
+            const edgesRes = await axios.get('https://graphide-backend.onrender.com/edges');
             setNodes(nodesRes.data);
             setEdges(edgesRes.data);
         };
@@ -63,17 +63,17 @@ const GraphManager = () => {
                 alert('Node already exists.');
                 return;
             }
-            await axios.post('http://localhost:5000/nodes', { name: nodeInput });
+            await axios.post('https://graphide-backend.onrender.com/nodes', { name: nodeInput });
             setNodeInput('');
-            const nodesRes = await axios.get('http://localhost:5000/nodes');
+            const nodesRes = await axios.get('https://graphide-backend.onrender.com/nodes');
             setNodes(nodesRes.data);
         }
     };
 
     const removeNode = async (node) => {
-        await axios.delete(`http://localhost:5000/nodes/${node}`);
-        const nodesRes = await axios.get('http://localhost:5000/nodes');
-        const edgesRes = await axios.get('http://localhost:5000/edges');
+        await axios.delete(`https://graphide-backend.onrender.com/nodes/${node}`);
+        const nodesRes = await axios.get('https://graphide-backend.onrender.com/nodes');
+        const edgesRes = await axios.get('https://graphide-backend.onrender.com/edges');
         setNodes(nodesRes.data);
         setEdges(edgesRes.data);
     };
@@ -87,16 +87,16 @@ const GraphManager = () => {
 
     const addEdge = async () => {
         if (edgeInput.from && edgeInput.to) {
-            await axios.post('http://localhost:5000/edges', edgeInput);
+            await axios.post('https://graphide-backend.onrender.com/edges', edgeInput);
             setEdgeInput({ from: '', to: '' });
-            const edgesRes = await axios.get('http://localhost:5000/edges');
+            const edgesRes = await axios.get('https://graphide-backend.onrender.com/edges');
             setEdges(edgesRes.data);
         }
     };
 
     const removeEdge = async (from, to) => {
-        await axios.delete(`http://localhost:5000/edges/${from}/${to}`);
-        const edgesRes = await axios.get('http://localhost:5000/edges');
+        await axios.delete(`https://graphide-backend.onrender.com/edges/${from}/${to}`);
+        const edgesRes = await axios.get('https://graphide-backend.onrender.com/edges');
         setEdges(edgesRes.data);
     };
 
