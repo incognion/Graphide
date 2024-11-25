@@ -29,7 +29,7 @@ const GraphVisualizer = ({ nodes, edges }) => {
     return (
         <div className="graph-container">
             <div className="graph-content">
-                <h3>Graph Visualization:</h3>
+                <h3>Graph Visualization</h3>
                 <div ref={networkRef} className="graph"></div>
             </div>
         </div>

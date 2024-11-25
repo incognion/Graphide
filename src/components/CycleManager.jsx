@@ -5,6 +5,8 @@ const CycleManager = ({ nodes, edges }) => {
     const [cycles, setCycles] = useState([]);
 
     const detectCycleHandler = () => {
+        setCycles([]);
+
         const g = new Graph();
         nodes.forEach(node => g.setNode(node.name));
         edges.forEach(edge => g.setEdge(edge.from, edge.to));
@@ -41,6 +43,11 @@ const CycleManager = ({ nodes, edges }) => {
             }
         });
 
+        if (foundCycles.length === 0) {
+            alert('There is no cycle present in the graph');
+            return;
+        }
+
         setCycles(foundCycles);
     };
 
@@ -50,30 +57,23 @@ const CycleManager = ({ nodes, edges }) => {
 
             <button onClick={detectCycleHandler}>Check</button>
 
-            {cycles.length > 0 ? (
-                <div className='cycles'>
-                    <ul>
-                        {cycles.map((cycle, index) => (
-                            <li key={index}>
-                                {Array.isArray(cycle) ? (
-                                    <div className="cycle">
-                                        {cycle.map((node, index) => (
-                                            <React.Fragment key={index}>
-                                                <div className="cycle-node">{node}</div>
-                                                {index < cycle.length - 1 && <div className="cycle-connector"></div>}
-                                            </React.Fragment>
-                                        ))}
-                                    </div>
-                                ) : (
-                                    cycle
-                                )}
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-            ) : (
-                <p>There are no cycles present in the graph or haven't checked yet.</p>
-            )}
+            <div className='cycles'>
+                <ul>
+                    {cycles.map((cycle, index) => (
+                        <li key={index}>
+                            <div className="cycle">
+                                {cycle.map((node, index) => (
+                                    <React.Fragment key={index}>
+                                        <div className="cycle-node">{node}</div>
+                                        {index < cycle.length - 1 && <div className="cycle-connector"></div>}
+                                    </React.Fragment>
+                                ))}
+                            </div>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+            
         </div>
     )
 }

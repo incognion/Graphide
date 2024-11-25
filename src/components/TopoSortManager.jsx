@@ -31,8 +31,8 @@ const TopoSortManager = ({ nodes, edges }) => {
             }
         });
 
-        stack.reverse(); // The stack has the elements in reverse topological order
-        setTopoSort(stack); // Update state with the result
+        stack.reverse();
+        setTopoSort(stack);
     };
 
     return (

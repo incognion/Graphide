@@ -8,13 +8,14 @@ const ShortestPathManager = ({ nodes, edges }) => {
     const [shortestPath, setShortestPath] = useState([]);
 
     const getShortestPathHandler = () => {
+        setShortestPath([]);
+
         const g = new Graph();
         nodes.forEach(node => g.setNode(node.name));
         edges.forEach(edge => g.setEdge(edge.from, edge.to));
 
         if (source && target) {
             if (!g.hasNode(source) || !g.hasNode(target)) {
-                setShortestPath([]); // Clear the path if nodes are not present
                 alert('Source or target node does not exist in the graph.');
                 return;
             }
@@ -35,7 +36,7 @@ const ShortestPathManager = ({ nodes, edges }) => {
             while (!queue.isEmpty()) {
                 const currentNode = queue.dequeue().element;
 
-                if (currentNode === target) {
+                if (currentNode === target && distances[target] != Infinity) {
                     const path = [];
                     let temp = currentNode;
                     while (temp) {
@@ -56,8 +57,14 @@ const ShortestPathManager = ({ nodes, edges }) => {
                     }
                 });
             }
+
+            if (shortestPath.length === 0) {
+                alert(`No path found connecting the nodes ${source} and ${target}.`);
+                return;
+            }
         } else {
-            setShortestPath([]);
+            alert('Please specify source and target both.');
+            return;
         }
     };
 
@@ -81,18 +88,15 @@ const ShortestPathManager = ({ nodes, edges }) => {
                 <button onClick={getShortestPathHandler}>Get</button>
             </div>
 
-            {shortestPath.length > 0 ? (
-                <div className="shortest-path">
-                    {shortestPath.map((node, index) => (
-                        <React.Fragment key={index}>
-                            <div className="path-node">{node}</div>
-                            {index < shortestPath.length - 1 && <div className="path-connector"></div>}
-                        </React.Fragment>
-                    ))}
-                </div>
-            ) : (
-                <p>No path found or source/target not specified.</p>
-            )}
+            {shortestPath.length > 0 && <div className="shortest-path">
+                {shortestPath.map((node, index) => (
+                    <React.Fragment key={index}>
+                        <div className="path-node">{node}</div>
+                        {index < shortestPath.length - 1 && <div className="path-connector"></div>}
+                    </React.Fragment>
+                ))}
+            </div>}
+
         </div>
     )
 }
