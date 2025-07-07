@@ -20,7 +20,7 @@ const GraphVisualizer = ({ nodes, edges }) => {
         edges.map(edge => ({
           from: edge.from,
           to: edge.to,
-          arrows: 'to',
+          // arrows: 'to',
         }))
       );
 
@@ -28,8 +28,7 @@ const GraphVisualizer = ({ nodes, edges }) => {
       const options = {
         nodes: {
           shape: 'circle',
-          size: 24,
-          font: { size: 16, color: 'white'},
+          font: { size: 22, color: '#ffffff'},
         },
         edges: { color: '#666', width: 2 },
         // physics: { stabilization: { iterations: 400 } },
