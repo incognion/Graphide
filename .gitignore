@@ -75,3 +75,5 @@ Thumbs.db
 *.lock
 yarn.lock
 package-lock.json
+
+.hintrc

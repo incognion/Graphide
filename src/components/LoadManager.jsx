@@ -1,19 +1,21 @@
-import React from 'react'
+import React from 'react';
 import { Triangle } from 'react-loader-spinner';
 
 const LoadManager = () => {
-    return (
-        <div className="loading-container">
-            <Triangle
-                visible={true}
-                height="100"
-                width="100"
-                color="#444"
-                ariaLabel="triangle-loading"
-            />
-            <p>Loading...</p>
-        </div>
-    )
-}
+  return (
+    <div className="loading-overlay">
+      <div className="loading-container">
+        <Triangle
+          height="80"
+          width="80"
+          color="#4a90e2"
+          ariaLabel="loading"
+          wrapperStyle={{}}
+        />
+        <p className="loading-text">Loading…</p>
+      </div>
+    </div>
+  );
+};
 
-export default LoadManager
+export default LoadManager;
