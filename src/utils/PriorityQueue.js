@@ -5,10 +5,21 @@ class PriorityQueue {
   }
 
   enqueue(element, priority) {
-    const queueElement = { element, priority };
-    this.items.push(queueElement);
+    // Find if the element is already in the queue
+    const index = this.items.findIndex(qe => qe.element === element);
+
+    if (index !== -1) {
+        // If found, update the priority only if new priority is lower
+        if (priority < this.items[index].priority) {
+            this.items[index].priority = priority;
+        }
+    } else {
+        // If not found, add new element
+        this.items.push({ element, priority });
+    }
+    // Always sort after insertion/update
     this.items.sort((a, b) => a.priority - b.priority);
-  }
+}
 
   dequeue() {
     return this.items.shift();
